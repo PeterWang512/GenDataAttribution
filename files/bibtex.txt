@@ -1,0 +1,6 @@
+@article{wang2023dataattribution,
+  author = {Wang, Sheng-Yu and Efros, Alexei A and Zhu, Jun-Yan and Zhang, Richard},
+  title = {Evaluating Data Attribution for Text-to-Image Models},
+  journal = {Arxiv},
+  year = {2023},
+}

@@ -1,0 +1,360 @@
+
+
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+      <!--
+      <script src="./resources/jsapi" type="text/javascript"></script>
+      <script type="text/javascript" async>google.load("jquery", "1.3.2");</script>
+     -->
+    
+    <style type="text/css">
+      body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+        text-align: justify;
+      }
+      h1 {
+        font-weight:300;
+      }
+      h2 {
+        font-weight:300;
+      }
+      .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+      }
+      video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+      }
+      img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+      }
+      img.rounded {
+        border: 0px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+      }
+      a:link,a:visited
+      {
+        color: #1367a7;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #208799;
+      }
+      td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+      }
+
+      .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                15px 15px 0 0px #fff, /* The fourth layer */
+                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                20px 20px 0 0px #fff, /* The fifth layer */
+                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                25px 25px 0 0px #fff, /* The fifth layer */
+                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+      }
+      .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+      }
+      .vert-cent {
+        position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+      hr
+      {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      }
+    </style>
+    
+    
+    
+        <title>Evaluating Data Attribution for Text-to-Image Models</title>
+        <meta property="og:image" content="http://peterwang512.github.io/GenDataAttribution/files/thumbnail.png">
+        <meta property="og:title" content="Evaluating Data Attribution for Text-to-Image Models">
+      </head>
+    
+      <body>
+            <br>
+              <center>
+                <span style="font-size:34px">Evaluating Data Attribution for Text-to-Image Models</span><br><br>
+    
+              <table align="center" width="850px">
+                <tbody><tr>
+                        <td align="center" width="205px">
+                  <center>
+                    <span style="font-size:20px"><a href="http://peterwang512.github.io">Sheng-Yu Wang</a><sup>1</sup></span>
+                    </center>
+                    </td>
+                        <td align="center" width="175px">
+                  <center>
+                    <span style="font-size:20px"><a href="https://people.eecs.berkeley.edu/~efros/">Alexei A. Efros</a><sup>2</sup></span>
+                    </center>
+                    </td>
+                        <td align="center" width="175px">
+                  <center>
+                    <span style="font-size:20px"><a href="http://cs.cmu.edu/~junyanz">Jun-Yan Zhu</a><sup>1</sup></span>
+                    </center>
+                    </td>
+                        <td align="center" width="175px">
+                  <center>
+                    <span style="font-size:20px"><a href="http://richzhang.github.io/">Richard Zhang</a><sup>3</sup></span>
+                    </center>
+                    </td>
+                </tr>
+            </tbody></table>
+    
+              <table align="center" width="700px">
+                <tbody><tr>
+                        <td align="center" width="100px">
+                  <center>
+                        <span style="font-size:20px"></span>
+                    </center>
+                    </td>
+                        <td align="center" width="400px">
+                  <center>
+                        <span style="font-size:20px"><sup>1</sup>Carnegie Mellon University</span>
+                    </center>
+                    </td>
+                        <td align="center" width="250px">
+                  <center>
+                        <span style="font-size:20px"><sup>2</sup>UC Berkeley</span>
+                    </center>
+                    </td>
+                        <td align="center" width="250px">
+                  <center>
+                        <span style="font-size:20px"><sup>3</sup>Adobe Research</span>
+                    </center>
+                    </td>
+                        <td align="center" width="100px">
+                  <center>
+                        <span style="font-size:20px"></span>
+                    </center>
+                    </td>
+            </tr></tbody></table>
+
+    
+              <table align="center" width="500px">
+                <tbody><tr>
+    <!--                     <td align="center" width="50px">
+                  <center>
+                        <span style="font-size:18px"></span>
+                    </center>
+                    </td> -->
+                        <td align="center" width="200px">
+                  <center>
+                    <br>
+                    <span style="font-size:20px"><a href="https://github.com/peterwang512/GenDataAttribution"> [Code (coming soon)]</a></span>
+                    </center>
+                    </td>
+                        <td align="center" width="200px">
+                  <center>
+                    <br>
+                    <span style="font-size:20px"><a href=""> <!-- [Paper] -->[Paper  (Arxiv 2023)]</a></span>
+                    </center>
+                    </td>
+
+    
+            </tr></tbody></table>
+                                        <!-- <p> In ArXiv, 2023. </p> -->
+              </center>
+            <br>
+            <table align="center" width="1000px">
+              <tbody><tr>
+                      <td width="400px">
+                <center>
+<!--                     <video id="teaser_video" width="720px" loop src="./files/teaser_video.mp4" autoplay muted>
+                        Your browser does not support HTML5 Player 
+                    </video> -->
+                    <img src="files/thumbnail.png" width="960px">
+                          <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+                </center>
+                      </td>
+                      </tr>
+                      </tbody></table>
+                <br>
+                (a) We create an visual data attribution dataset by taking a pretrained generative model and tuning it toward an exemplar image (or images) using "customization". This produces a set of synthesized images that are computationally influenced by the exemplar <i>by construction</i>. 
+                <br>
+                (b) Given the dataset, we can evaluate data attribution approaches by how high they rank the exemplar relative to other training images. Furthermore, using our dataset, we tune representations toward attribution and estimate the probability a given image was an exemplar.
+                <br>
+              <br>
+          <hr>
+    
+            <center><h2>Abstract</h2></center>
+  While large text-to-image models are able to synthesize "novel" images, these images are necessarily a reflection of the training data. The problem of data attribution in such models -- which of the images in the training set are most responsible for the appearance of a given generated image -- is a difficult yet important one. As an initial step toward this problem, we evaluate attribution through "customization" methods, which tune an existing large-scale model toward a given exemplar object or style. Our key insight is that this allow us to efficiently create synthetic images that are computationally influenced by the exemplar by construction. With our new dataset of such exemplar-influenced images, we are able to evaluate various data attribution algorithms and different possible feature spaces. Furthermore, by training on our dataset, we can tune standard models, such as DINO, CLIP, and ViT, toward the attribution problem. Even though the procedure is tuned towards small exemplar sets, we show generalization to larger sets. Finally, by taking into account the inherent uncertainty of the problem, we can assign soft attribution scores over a set of training images.
+    
+    
+        <br>
+    
+    
+    
+          <br><hr>
+
+        <center><h2>Dataset</h2></center><table align="center" width="700" px="">
+            <p>We curate our attribution dataset using <a href="https://www.cs.cmu.edu/~custom-diffusion/">Custom Diffusion</a>. We create two groups of models: (1) Object-centric models: we finetune each model on an exemplar object instance image of a known class from ImageNet. (2) Artistic style-centric models: we finetune each model on an exemplar style defined by a small image collection. For each model, we use ChatGPT (top) to generate prompts and also generate prompts procedurally with a collection of media or objects (bottom).</p>
+          <center>
+                <img src="./files/dataset.png" width="1100px">
+            </center>
+        <br><hr>
+
+        <center><h2>Method</h2></center><table align="center" width="700" px="">
+            <p>We finetune pre-trained image features on our dataset to improve attribution. We use contrastive learning to learn a linear layer on top of an existing feature space. The embedding learns high similarity for corresponding training and synthesized images, in contrast to non-corresponding images from the dataset.</p>
+          <center>
+                <img src="./files/method.png" width="700px">
+                  <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+            </center>
+        <br><hr>
+    
+          <center><h2>Results</h2></center>
+    
+    
+           <p align="center"><b>Attributing exemplars.</b> For a given synthesized sample, obtained by training on exemplar image(s) of an acorn squash (top) and paintings by Alfred Sisley (bottom), our fine-tuned attribution method improves the ranking and influence score of the exemplar training image. Exemplar image are in red boxes. Green text is our estimated influence score as percentage assignments over the dataset.</p>
+           
+           <center>
+            <img src="./files/retrieval.png" width="1000px">
+                  <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+            </center>
+    
+            <hr>
+           <p align="center"><b>Attributing Stable Diffusion Images.</b> We run our influence score prediction function with CLIP, tuned on our attribution datasets.</p>
+           <center>
+            <img src="./files/sd_nn.png" width="1000px">
+                  <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+            </center>
+    
+
+        <p align="center"><b>Copy detection results.</b> We investigate our data attribution method when a synthesized image query is a “duplicate” of the training data. We take duplicates found in <a href="https://arxiv.org/abs/2212.03860"> Somepalli et al.</a>, where the images in the red box are the training image matches reported by the authors. We observe that there exist multiple training images from LAION that resemble the query, and the attribution score dropoff (green → orange) is significant between similar images and other images </p>
+        <center>
+            <img src="./files/copy.png" width="800px">
+                  <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+            </center>
+
+            <hr>
+            <center><h2>Paper</h2></center><table align="center" width="700" px="">
+    
+              <tbody><tr>
+              <td><a href=""><img class="layered-paper-big" style="height:175px" src="./files/firstpg.png"></a></td>
+              <td><span style="font-size:12pt">Sheng-Yu Wang, Alexei A. Efros, Jun-Yan Zhu, Richard Zhang.</span><br>
+              <b><span style="font-size:12pt">Evaluating Data Attribution for Text-to-Image Models.</span></b><br>
+              <span style="font-size:12pt">In ArXiv, 2023. (<a href="">Paper</a>)</span>
+              </td>
+    
+              <br>
+              <table align="center" width="600px">
+                <tbody>
+                  <tr>
+                    <td>
+                      <center>
+                        <span style="font-size:22px">
+                          <a href="./files/bibtex.txt" target="_blank">[Bibtex]</a>
+                        </span>
+                      </center>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          <br>
+
+
+    <br><hr>
+    <table align="center" width="1000px">
+      <tbody><tr>
+              <td width="400px">
+        <left>
+      <center><h2>Related works</h2></center>
+    </left>
+    <p><b>Data attribution for classifiers:</b></p>
+    <ul>
+      <li>Sung Min Park, Kristian Georgiev, Andrew Ilyas, Guillaume Leclerc, and Aleksander Madry. <a href="https://arxiv.org/abs/2303.14186">"TRAK: Attributing Model Behavior at Scale."</a>. In ArXiv 2023.</li><br>
+      <li>Vitaly Feldman and Chiyuan Zhang. <a href="https://arxiv.org/abs/2008.03703">"What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation."</a>. In NeurIPS 2020.</li><br>
+      <li>Pang Wei Koh and Percy Liang. <a href="https://arxiv.org/abs/1703.04730">"Understanding Black-box Predictions via Influence Functions."</a>. In ICML 2017.</li><br>
+    </ul>
+
+    </td>
+    </tr>
+    </tbody></table>
+
+
+
+    
+    
+          <br><hr>
+    
+            <table align="center" width="1100px">
+              <tbody><tr>
+                      <td width="400px">
+                <left>
+              <center><h2>Acknowledgements</h2></center>
+              We thank Aaron Hertzmann for reading over an earlier draft and for insightful feedback. We thank colleagues in Adobe Research, including Eli Shechtman, Oliver Wang, Nick Kolkin, Taesung Park, John Collomosse, and Sylvain Paris, along with Alex Li and Yonglong Tian for helpful discussion. We appreciate Nupur Kumari for guidance with Custom Diffusion training, Ruihan Gao for proof-reading the draft, Alex Li for pointers to extract Stable Diffusion features, and Dan Ruta for help with the BAM-FG dataset. We thank Bryan Russell for pandemic hiking and brainstorming. This work started when SYW was an Adobe intern and was supported in part by an Adobe gift and J.P. Morgan Chase Faculty Research Award. Website template is from <a href="https://richzhang.github.io/colorization/">Colorful Colorization</a>.
+          </left>
+        </td>
+           </tr>
+        </tbody></table>
+    
+        <br>
+
+        <hr>
+        <center><h2>Citation</h2></center>
+
+            <code style="display:block; background:#D3D3D3;">
+                @article{wang2023dataattribution,<br>
+                &nbsp; author = {Wang, Sheng-Yu and Efros, Alexei A and Zhu, Jun-Yan and Zhang, Richard},<br>
+                &nbsp; title  = {Evaluating Data Attribution for Text-to-Image Models},<br>
+                &nbsp; journal = {Arxiv},<br>
+                &nbsp; year   = {2023},<br>
+                &nbsp; }</code>
+        <br>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XG25SVHBEL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XG25SVHBEL');
+  </script>
+    
+    </body></html>
