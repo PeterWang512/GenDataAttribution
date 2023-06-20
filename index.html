@@ -111,7 +111,7 @@
     
     
         <title>Evaluating Data Attribution for Text-to-Image Models</title>
-        <meta property="og:image" content="http://peterwang512.github.io/GenDataAttribution/files/thumbnail.png">
+        <meta property="og:image" content="http://peterwang512.github.io/GenDataAttribution/files/thumbnail.jpg">
         <meta property="og:title" content="Evaluating Data Attribution for Text-to-Image Models">
       </head>
     
@@ -207,7 +207,7 @@
 <!--                     <video id="teaser_video" width="720px" loop src="./files/teaser_video.mp4" autoplay muted>
                         Your browser does not support HTML5 Player 
                     </video> -->
-                    <img src="files/thumbnail.png" width="960px">
+                    <img src="files/thumbnail.jpg" width="960px">
                           <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
                 </center>
                       </td>
@@ -234,14 +234,14 @@
         <center><h2>Dataset</h2></center><table align="center" width="700" px="">
             <p>We curate our attribution dataset using <a href="https://www.cs.cmu.edu/~custom-diffusion/">Custom Diffusion</a>. We create two groups of models: (1) Object-centric models: we finetune each model on an exemplar object instance image of a known class from ImageNet. (2) Artistic style-centric models: we finetune each model on an exemplar style defined by a small image collection. For each model, we use ChatGPT (top) to generate prompts and also generate prompts procedurally with a collection of media or objects (bottom).</p>
           <center>
-                <img src="./files/dataset.png" width="1100px">
+                <img src="./files/dataset.jpg" width="1100px">
             </center>
         <br><hr>
 
         <center><h2>Method</h2></center><table align="center" width="700" px="">
             <p>We finetune pre-trained image features on our dataset to improve attribution. We use contrastive learning to learn a linear layer on top of an existing feature space. The embedding learns high similarity for corresponding training and synthesized images, in contrast to non-corresponding images from the dataset.</p>
           <center>
-                <img src="./files/method.png" width="700px">
+                <img src="./files/method.jpg" width="700px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
             </center>
         <br><hr>
@@ -252,21 +252,21 @@
            <p align="center"><b>Attributing exemplars.</b> For a given synthesized sample, obtained by training on exemplar image(s) of an acorn squash (top) and paintings by Alfred Sisley (bottom), our fine-tuned attribution method improves the ranking and influence score of the exemplar training image. Exemplar image are in red boxes. Green text is our estimated influence score as percentage assignments over the dataset.</p>
            
            <center>
-            <img src="./files/retrieval.png" width="1000px">
+            <img src="./files/retrieval.jpg" width="1000px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
             </center>
     
             <hr>
            <p align="center"><b>Attributing Stable Diffusion Images.</b> We run our influence score prediction function with CLIP, tuned on our attribution datasets.</p>
            <center>
-            <img src="./files/sd_nn.png" width="1000px">
+            <img src="./files/sd_nn.jpg" width="1000px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
             </center>
     
 
         <p align="center"><b>Copy detection results.</b> We investigate our data attribution method when a synthesized image query is a “duplicate” of the training data. We take duplicates found in <a href="https://arxiv.org/abs/2212.03860"> Somepalli et al.</a>, where the images in the red box are the training image matches reported by the authors. We observe that there exist multiple training images from LAION that resemble the query, and the attribution score dropoff (green → orange) is significant between similar images and other images </p>
         <center>
-            <img src="./files/copy.png" width="800px">
+            <img src="./files/copy.jpg" width="800px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
             </center>
 
@@ -274,7 +274,7 @@
             <center><h2>Paper</h2></center><table align="center" width="700" px="">
     
               <tbody><tr>
-              <td><a href=""><img class="layered-paper-big" style="height:175px" src="./files/firstpg.png"></a></td>
+              <td><a href=""><img class="layered-paper-big" style="height:175px" src="./files/firstpg.jpg"></a></td>
               <td><span style="font-size:12pt">Sheng-Yu Wang, Alexei A. Efros, Jun-Yan Zhu, Richard Zhang.</span><br>
               <b><span style="font-size:12pt">Evaluating Data Attribution for Text-to-Image Models.</span></b><br>
               <span style="font-size:12pt">In ArXiv, 2023. (<a href="">Paper</a>)</span>
