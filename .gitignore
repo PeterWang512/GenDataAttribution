@@ -1,0 +1,11 @@
+__pycache__/
+experiments/
+wandb/
+results/
+*.html
+*.tar
+*.pt
+*.pth
+*.pdf
+nohup.out
+.ipynb_checkpoints/

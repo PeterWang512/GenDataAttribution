@@ -1,0 +1,19 @@
+name: gen-attr
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - python=3.8.5
+  - pip=20.3
+  - pytorch
+  - pytorch-cuda
+  - torchvision
+  - numpy
+  - pandas
+  - pip:
+    - gdown
+    - timm==0.4.12
+    - streamlit>=0.73.1
+    - -e git+https://github.com/openai/CLIP.git@main#egg=clip
+  
