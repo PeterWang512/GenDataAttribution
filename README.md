@@ -1,19 +1,15 @@
 ## Evaluating Data Attribution for Text-to-Image Models
 [**Project**](https://peterwang512.github.io/GenDataAttribution/) | [**Paper**](https://arxiv.org/abs/2306.09345)
 
-
-<p align="center">
- <img src="images/thumbnail.jpg" width="800px"/>
-</p>
-
-
-(a) We create an visual data attribution dataset by taking a pretrained generative model and tuning it toward an exemplar image (or images) using "customization". This produces a set of synthesized images that are computationally influenced by the exemplar by construction.
-(b) Given the dataset, we can evaluate data attribution approaches by how high they rank the exemplar relative to other training images. Furthermore, using our dataset, we tune representations toward attribution and estimate the probability a given image was an exemplar.
-<br><br><br>
-
 [Sheng-Yu Wang](https://peterwang512.github.io/)<sup>1</sup>, [Alexei A. Efros](https://people.eecs.berkeley.edu/~efros/)<sup>2</sup>, [Jun-Yan Zhu](https://cs.cmu.edu/~junyanz)<sup>1</sup>, [Richard Zhang](http://richzhang.github.io/)<sup>3</sup>.
 <br> Carnegie Mellon University<sup>1</sup>, UC Berkeley<sup>2</sup>, Adobe Research<sup>2</sup>
 <br>In [ICCV](https://arxiv.org/abs/2306.09345), 2023.
+
+
+https://github.com/PeterWang512/GenDataAttribution/assets/20047790/65efa93c-28f3-4f69-b711-5d4956eda050
+
+### Abstract
+While large text-to-image models are able to synthesize "novel" images, these images are necessarily a reflection of the training data. The problem of data attribution in such models -- which of the images in the training set are most responsible for the appearance of a given generated image -- is a difficult yet important one. As an initial step toward this problem, we evaluate attribution through "customization" methods, which tune an existing large-scale model toward a given exemplar object or style. Our key insight is that this allow us to efficiently create synthetic images that are computationally influenced by the exemplar by construction. With our new dataset of such exemplar-influenced images, we are able to evaluate various data attribution algorithms and different possible feature spaces. Furthermore, by training on our dataset, we can tune standard models, such as DINO, CLIP, and ViT, toward the attribution problem. Even though the procedure is tuned towards small exemplar sets, we show generalization to larger sets. Finally, by taking into account the inherent uncertainty of the problem, we can assign soft attribution scores over a set of training images.
 
 
 ## Setup
