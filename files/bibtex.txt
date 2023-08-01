@@ -1,6 +1,6 @@
-@article{wang2023dataattribution,
-  author = {Wang, Sheng-Yu and Efros, Alexei A and Zhu, Jun-Yan and Zhang, Richard},
-  title = {Evaluating Data Attribution for Text-to-Image Models},
-  journal = {Arxiv},
-  year = {2023},
+@inproceedings{wang2023evaluating,
+  title={Evaluating Data Attribution for Text-to-Image Models},
+  author={Wang, Sheng-Yu and Efros, Alexei A. and Zhu, Jun-Yan and Zhang, Richard},
+  booktitle={ICCV},
+  year={2023}
 }
