@@ -106,7 +106,39 @@
         height: 1px;
         background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
       }
+      #imageContainer {
+        display: none;
+      }
+      #toggleButton {
+        background: none;
+        border: none;
+        font-weight: bold;
+        font-size: 26pt;
+        cursor: pointer;
+        text-decoration: underline;
+        color: darkorchid;
+      }
+      #toggleButton.clicked {
+        color: darkgray; /* Change this to the desired color */
+      }
     </style>
+
+    <script>
+      function toggleImage() {
+        var imageContainer = document.getElementById("imageContainer");
+        var button = document.getElementById("toggleButton")
+
+        if (imageContainer.style.display === "block") {
+          button.classList.remove("clicked");      
+          imageContainer.style.display = "none";
+          button.innerHTML = "&#x25BC;Click here for more results..."
+        } else {
+          button.classList.add("clicked");
+          imageContainer.style.display = "block";
+          button.innerHTML = "&#x25B2;Click here to hide results..."
+        }
+      }
+    </script>
     
     
     
@@ -204,7 +236,7 @@
               <tbody><tr>
                       <td width="400px">
                 <center>
-                    <video id="teaser_video" width="1024px" loop src="./files/short_vid.mp4" autoplay muted controls>
+                    <video id="teaser_video" width="1024px" loop src="./files/short_vid_v2.mp4" autoplay muted controls>
                         Your browser does not support HTML5 Player 
                     </video>
                     <!-- <img src="files/thumbnail.jpg" width="960px"> -->
@@ -247,7 +279,7 @@
           <center><h2>Results</h2></center>
     
     
-           <p align="center"><b>Attributing exemplars.</b> For a given synthesized sample, obtained by training on exemplar image(s) of an acorn squash (top) and paintings by Alfred Sisley (bottom), our fine-tuned attribution method improves the ranking and influence score of the exemplar training image. Exemplar image are in red boxes. Green text is our estimated influence score as percentage assignments over the dataset.</p>
+           <p><b>Attributing exemplars.</b> For a given synthesized sample, obtained by training on exemplar image(s) of an acorn squash (top) and paintings by Alfred Sisley (bottom), our fine-tuned attribution method improves the ranking and influence score of the exemplar training image. Exemplar image are in red boxes. Green text is our estimated influence score as percentage assignments over the dataset.</p>
            
            <center>
             <img src="./files/retrieval.jpg" width="1000px">
@@ -255,14 +287,21 @@
             </center>
     
             <hr>
-           <p align="center"><b>Attributing Stable Diffusion Images.</b> We run our influence score prediction function with CLIP, tuned on our attribution datasets.</p>
+           <p><b>Attributing Stable Diffusion Images.</b> We run our influence score prediction function with CLIP, tuned on our attribution datasets. In each row, we show a generated sample query (Left), and the top attributed training images from the full LAION-400M set (Right). We find that LAION-400M have more images containing a similar concept, and attribution scores are shared more
+ evenly across such images. </p>
            <center>
-            <img src="./files/sd_nn.jpg" width="1000px">
+            <img src="./files/sd_nn.jpg" width="1100px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
+            <button id="toggleButton" onclick="toggleImage()"> &#x25BC;Click here for more results...</button>
+            <div id="imageContainer">
+              <img src="./files/sd_nn_more.jpg" width="1100px" alt="Image">
+            </div>
             </center>
+
+
     
 
-        <p align="center"><b>Copy detection results.</b> We investigate our data attribution method when a synthesized image query is a “duplicate” of the training data. We take duplicates found in <a href="https://arxiv.org/abs/2212.03860"> Somepalli et al.</a>, where the images in the red box are the training image matches reported by the authors. We observe that there exist multiple training images from LAION that resemble the query, and the attribution score dropoff (green → orange) is significant between similar images and other images </p>
+        <p><b>Copy detection results.</b> We investigate our data attribution method when a synthesized image query is a “duplicate” of the training data. We take duplicates found in <a href="https://arxiv.org/abs/2212.03860"> Somepalli et al.</a>, where the images in the red box are the training image matches reported by the authors. We observe that there exist multiple training images from LAION that resemble the query, and the attribution score dropoff (green → orange) is significant between similar images and other images. </p>
         <center>
             <img src="./files/copy.jpg" width="800px">
                   <!-- <img class="rounded" src="./files/teaser_video.mp4" width="1000px"> -->
