@@ -6,7 +6,11 @@
 <br>In [ICCV](https://arxiv.org/abs/2306.09345), 2023.
 
 
-https://github.com/PeterWang512/GenDataAttribution/assets/20047790/65efa93c-28f3-4f69-b711-5d4956eda050
+
+https://github.com/PeterWang512/GenDataAttribution/assets/20047790/9d07f403-f0fd-40b1-889a-0c14e1ecb4b7
+
+
+
 
 ### Abstract
 While large text-to-image models are able to synthesize "novel" images, these images are necessarily a reflection of the training data. The problem of data attribution in such models -- which of the images in the training set are most responsible for the appearance of a given generated image -- is a difficult yet important one. As an initial step toward this problem, we evaluate attribution through "customization" methods, which tune an existing large-scale model toward a given exemplar object or style. Our key insight is that this allow us to efficiently create synthetic images that are computationally influenced by the exemplar by construction. With our new dataset of such exemplar-influenced images, we are able to evaluate various data attribution algorithms and different possible feature spaces. Furthermore, by training on our dataset, we can tune standard models, such as DINO, CLIP, and ViT, toward the attribution problem. Even though the procedure is tuned towards small exemplar sets, we show generalization to larger sets. Finally, by taking into account the inherent uncertainty of the problem, we can assign soft attribution scores over a set of training images.
