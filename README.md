@@ -93,6 +93,8 @@ The metrics are stored in `.pkl` files in `results`. Currently, the script runs 
 python results_to_csv.py
 ```
 
+<b>12/18/2023 Update</b> To download models only trained on object-centric or style-centric models, run `bash weights/download_style_object_ablation.sh`
+
 ## Citation
 ```
 @inproceedings{wang2023evaluating,
